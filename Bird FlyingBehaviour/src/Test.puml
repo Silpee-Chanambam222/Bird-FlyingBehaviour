@@ -1,0 +1,82 @@
+
+@startuml
+
+' Interfaces
+interface Eat
+interface Fly
+interface SaySomething
+interface FlyingBehaviour {
+    +flyingBehaviour()
+}
+
+' Abstract/Base class
+class Bird {
+    - String name
+    - String color
+    - float weight
+
+    +getName(): String
+    +getColor(): String
+    +getWeight(): float
+    +setName(name: String)
+    +setColor(color: String)
+    +setWeight(weight: float)
+}
+
+' Subclasses
+class Crow {
+    - String color
+    +getColor(): String
+    +eat()
+    +fly()
+    +saySomething()
+}
+
+class Eagle {
+    +eat()
+    +fly()
+    +saySomething()
+}
+
+class Pigeon {
+    +fly()
+}
+
+class Sparrow {
+    +eat()
+    +fly()
+}
+
+class CrowEagleFlyingBehaviour {
+    +flyingBehaviour()
+}
+
+class PigeonSparrowFlyingBehaviour {
+    +flyingBehaviour()
+}
+
+' Inheritance
+Crow --|> Bird
+Eagle --|> Bird
+Pigeon --|> Bird
+Sparrow --|> Bird
+
+' Implements
+Crow ..|> Eat
+Crow ..|> Fly
+Crow ..|> SaySomething
+
+Eagle ..|> Eat
+Eagle ..|> Fly
+Eagle ..|> SaySomething
+
+Pigeon ..|> Fly
+Sparrow ..|> Eat
+Sparrow ..|> Fly
+
+CrowEagleFlyingBehaviour ..|> FlyingBehaviour
+PigeonSparrowFlyingBehaviour ..|> FlyingBehaviour
+
+@enduml
+
+
